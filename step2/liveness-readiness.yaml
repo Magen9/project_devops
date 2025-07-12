@@ -9,7 +9,7 @@ spec:
   - name: quakewatch
     image: magen83/flask-project-quakewatch:1.0
     ports:
-    - containerPort: 5000  # Укажите порт, который использует ваше Flask-приложение
+    - containerPort: 5000
     readinessProbe:
       tcpSocket:
         port: 5000
