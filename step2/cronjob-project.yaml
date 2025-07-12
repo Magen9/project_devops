@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: quakewatch-hourly
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: quakewatch
+            image: magen83/flask-project-quakewatch:1.0
+            imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
