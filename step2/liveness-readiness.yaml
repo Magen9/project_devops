@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: quakewatch
+  labels:
+    app: quakewatch
+spec:
+  containers:
+  - name: quakewatch
+    image: magen83/flask-project-quakewatch:1.0
+    ports:
+    - containerPort: 5000  # Укажите порт, который использует ваше Flask-приложение
+    readinessProbe:
+      tcpSocket:
+        port: 5000
+      initialDelaySeconds: 15
+      periodSeconds: 10
+    livenessProbe:
+      tcpSocket:
+        port: 5000
+      initialDelaySeconds: 15
+      periodSeconds: 10
